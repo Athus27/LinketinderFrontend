@@ -1,3 +1,5 @@
+import { Alarm } from "./AlarmModel.js";
+
 export class Task {
 	static nextId = 1;
 
@@ -16,7 +18,9 @@ export class Task {
 			this.id = Task.nextId++;
 		}
 
-		this.alarms = parameters.alarms || [];
+		this.alarms = (parameters.alarms || []).map((alarm) =>
+			alarm instanceof Alarm ? alarm : new Alarm(alarm)
+		);
 
 		this.title = parameters.title || "";
 		this.description = parameters.description || "";

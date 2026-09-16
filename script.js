@@ -6,6 +6,7 @@ import { BoardModel } from "./models/BoardModel.js";
 import { loadTasks, saveBoard } from "./scripts/storage.js";
 import { addTask, addTaskShow, showAndHiddenTaskOptions, toggleAlarmForm } from "./scripts/task.js";
 import { Alarm } from "./models/AlarmModel.js";
+import { collectDueAlarms } from "./scripts/alarm.js";
 
 const app = document.querySelector("#app");
 const board = new BoardModel();
@@ -177,3 +178,25 @@ window.deleteAlarm = (taskId, alarmId) => {
 window.board = board;
 
 render();
+
+setInterval(() => {
+	const triggeredAlarms = collectDueAlarms(board);
+
+	if (!triggeredAlarms.length) return;
+
+	for (const { task, alarm } of triggeredAlarms) {
+		const message = [
+			"=== TASK ALARM ===",
+			`Task: ${task.title}`,
+			`Description: ${task.description}`,
+			`Due date: ${new Date(task.dueDate).toLocaleString("pt-BR")}`,
+			`Alarm: ${new Date(alarm.alarmAt).toLocaleString("pt-BR")}`
+		].join("\n");
+
+		console.warn(message);
+		alert(message);
+	}
+
+	saveBoard(board);
+	render();
+}, 1000);
