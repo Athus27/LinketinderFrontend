@@ -1,61 +1,65 @@
+// script.js
 import { Board } from "./components/Board.js";
-import { loadTasks, saveBoard } from "./scripts/storage.js";
-
 import { Header } from "./components/ui/Header.js";
-
-import { TaskCard } from "./components/TaskCard.js";
-import {} from "./scripts/task.js";
-
-import { addTask, addTaskShow, showAndHiddenTaskOptions } from "./scripts/task.js";
+import { Task } from "./models/TaskModel.js";
 import { BoardModel } from "./models/BoardModel.js";
-window.addTaskShow = addTaskShow;
-window.showAndHiddenTaskOptions = showAndHiddenTaskOptions;
-window.loadTask = loadTasks;
-window.loadTask = saveBoard;
+import { loadTasks, saveBoard } from "./scripts/storage.js";
+import { addTask, addTaskShow, showAndHiddenTaskOptions } from "./scripts/task.js";
 
+const app = document.querySelector("#app");
 const board = new BoardModel();
 
-const tasks = [
-	{
-		id:1,
-		title: "Task 1",
-		description: "This is a test task.",
-		dueDate: "2024-06-30",
-		status: "ToDo"
-	},
-	{
-		id:2,
-		title: "Task 2",
-		description: "Outra task.",
-		dueDate: "2024-07-01",
-		status: "Doing"
-	}
-];
-
 const savedTasks = loadTasks();
-const initialTasks = savedTasks ?? tasks;
+const initialTasks = savedTasks ?? [];
 
-initialTasks.forEach((task) => board.addTask(task));
-
-function render() {
-	const app = document.querySelector("#app");
-
-	app.innerHTML = `
-		${Header()}
-		${Board(board.getTasks())}
-  `;
-}
-
-render();
-
-const form = document.querySelector("#taskForm");
-form.addEventListener("submit", (event) => {
-	console.log("SUBMIT formulario create task   ");
-	addTask(event, board);
+initialTasks.forEach((task) => {
+	board.addTask(new Task(task));
 });
 
-window.deleteTask = (taskId) => {
-    board.removeTask(taskId);
-    saveBoard(board);
-    render();
+function render() {
+	app.innerHTML = `
+        ${Header()}
+        ${Board(board.getTasks())}
+    `;
+}
+
+app.addEventListener("submit", (event) => {
+	if (event.target.id !== "taskForm") return;
+
+	addTask(event, board);
+	render();
+});
+
+window.addTaskShow = addTaskShow;
+window.showAndHiddenTaskOptions = showAndHiddenTaskOptions;
+
+window.moveDownTask = (taskId) => {
+	if (!board.moveTask(taskId, "down")) {
+		alert("A tarefa já está em Done.");
+		return;
+	}
+
+	saveBoard(board);
+	render();
 };
+
+window.moveUpTask = (taskId) => {
+	if (!board.moveTask(taskId, "up")) {
+		alert("A tarefa já está em ToDo.");
+		return;
+	}
+
+	saveBoard(board);
+	render();
+};
+
+window.deleteTask = (taskId) => {
+	board.removeTask(taskId);
+	saveBoard(board);
+	render();
+};
+
+// Apenas para depuração no console.
+window.board = board;
+
+render();

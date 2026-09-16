@@ -6,8 +6,6 @@ export class BoardModel {
 	addTask(task) {
 		this.tasks.push(task);
 		this.tasks = this.orderTasksBySection(this.tasks);
-
-		
 	}
 
 	removeTask(taskId) {
@@ -59,11 +57,22 @@ export class BoardModel {
 		}
 	}
 
-	updateTaskStatus(taskId) {
+	moveTask(taskId, direction) {
 		const task = this.tasks.find((task) => task.id === taskId);
-		if (task) {
-			let newStatus = this.updateTaskStatus(task.status);
-			newStatus ? (task.status = newStatus) : this.removeTask(taskId) && console.log("Task removed");
+		if (!task) return false;
+
+		const statuses = ["ToDo", "Doing", "Done"];
+		const currentIndex = statuses.indexOf(task.status);
+		const movement = direction === "down" ? 1 : -1;
+		const nextIndex = currentIndex + movement;
+
+		if (nextIndex < 0 || nextIndex >= statuses.length) {
+			return false;
 		}
+
+		task.status = statuses[nextIndex];
+		this.orderTasksBySection(this.tasks);
+
+		return true;
 	}
 }

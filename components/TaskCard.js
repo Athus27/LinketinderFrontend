@@ -11,8 +11,8 @@ export function TaskCard(task) {
                     <button class="showView" onClick=showAndHiddenTaskOptions(this)><img class = "icon" src = "../assets/icons/addTask.svg"></button>
                     <button class="ocultView"onClick=showAndHiddenTaskOptions(this)><img class="icon icon-minimize" src="../assets/icons/minimize.svg"></button>
                 
-                    <button class="opt-btn"><img class = "icon" src = "../assets/icons/up.svg"></button>
-                    <button class="opt-btn"><img class = "icon" src = "../assets/icons/down.svg"></button>
+                    <button class="opt-btn" onClick = "moveUpTask(${task.id})"><img class = "icon" src = "../assets/icons/up.svg"></button>
+                    <button class="opt-btn" onClick = "moveDownTask(${task.id})"><img class = "icon" src = "../assets/icons/down.svg"></button>
                     <button class="opt-btn" onClick = "deleteTask(${task.id})"><img class = "icon" src = "../assets/icons/delete.svg"></button>
                 </div>
             </div>
