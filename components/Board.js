@@ -15,10 +15,18 @@ export function Board(tasks) {
 						<form id="taskForm">
 							<label for="title">Title:</label>
 							<input type="text" id="title" name="title" required />
+
 							<label for="description">Description:</label>
 							<textarea id="description" name="description" required></textarea>
+
 							<label for="dueDate">Due Date:</label>
-							<input type="date" id="dueDate" name="dueDate" required />
+								<input
+									type="datetime-local"
+									id="dueDate"
+									name="dueDate"
+									required
+								>
+								
 							<div style="display: flex; justify-content: center; margin-top: 10px;">
 							</div>
 							<button type="submit">Add Task</button>

@@ -2,12 +2,19 @@ export function TaskCard(task) {
 	return `
         <div class="task-card">
             <div class="task-content">
-                <div>
-                    <h2>${task.title}</h2>
-                    <p>${task.description}</p>
-                    <p>Due Date: ${task.dueDate}</p>
+               <div class="task-info">
+                <h2>${task.title}</h2>
+                <p>${task.description}</p>
+                    <p class="task-date">
+                        <img
+                            class="calendar-icon"
+                            src="../assets/icons/calendar.svg"
+                            alt=""
+                        >
+                        <span>Due Date: ${formatDate(task.dueDate)}</span>
+                    </p>
                 </div>
-                <div style = "min-height:100px;width:25%;display: flex;flex-direction:row;justify-content: left;bottom: 0;">
+                <div class="task-controls">
                     <button class="showView" onClick=showAndHiddenTaskOptions(this)><img class = "icon" src = "../assets/icons/addTask.svg"></button>
                     <button class="ocultView"onClick=showAndHiddenTaskOptions(this)><img class="icon icon-minimize" src="../assets/icons/minimize.svg"></button>
                 
@@ -25,4 +32,13 @@ export function TaskCard(task) {
             </div>
         </div>
     `;
+}
+
+function formatDate(dateTime) {
+    if (!dateTime) return "";
+
+    const [date, time] = dateTime.split("T");
+    const [year, month, day] = date.split("-");
+
+    return `${day}/${month}/${year} às ${time}`;
 }

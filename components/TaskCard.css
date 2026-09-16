@@ -1,61 +1,92 @@
-.task-card{
-    display: flex;
-    background-color: var(--half-gray);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
+.task-card {
+	display: flex;
+	background-color: var(--half-gray);
+	color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	margin: 20px 0;
 }
-.task-options{
-    display: none;
-    background-color: red;
+
+.task-info {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.task-date {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.calendar-icon {
+	width: 20px;
+	height: 20px;
+	filter: brightness(0) invert(1);
+}
+
+.task-options {
+	display: none;
+	background-color: red;
+}
+
+.task-content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 180px;
+}
+
+.task-controls {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: auto;
 }
 
 .task-card button {
-    display: flex;
-    background:none;
-    border: none;
+	display: flex;
+	background: none;
+	border: none;
 }
 
-
 .icon-minimize {
-  transform: translateY(-15px); 
-
+	transform: translateY(-15px);
 }
 
 .task-card .ocultView,
 .task-card .opt-btn,
 .task-card .task-options {
-    display: none;
+	display: none;
 }
 
 .task-card.options-open .showView {
-    display: none;
+	display: none;
 }
 
 .task-card.options-open .ocultView,
 .task-card.options-open .opt-btn {
-    display: flex;
+	display: flex;
 }
 
 .task-card.options-open .task-options {
-    display: block;
+	display: block;
 }
 
-.icon{
-    left: 0!important;
-    background: none;
-    min-width: 50px;
-	
+.icon {
+	left: 0 !important;
+	background: none;
+	min-width: 50px;
+
 	filter: brightness(0) invert(1);
 }
 
-.task-content{
-    flex: 1;
+.task-content {
+	flex: 1;
 }
-.task-alarm{
-    flex: 0 0 100px;
-    margin-left: 20px;
-    align-items: center;
+.task-alarm {
+	flex: 0 0 100px;
+	margin-left: 20px;
+	align-items: center;
 }
