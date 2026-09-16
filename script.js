@@ -17,12 +17,14 @@ const board = new BoardModel();
 
 const tasks = [
 	{
+		id:1,
 		title: "Task 1",
 		description: "This is a test task.",
 		dueDate: "2024-06-30",
 		status: "ToDo"
 	},
 	{
+		id:2,
 		title: "Task 2",
 		description: "Outra task.",
 		dueDate: "2024-07-01",
@@ -41,8 +43,6 @@ function render() {
 	app.innerHTML = `
 		${Header()}
 		${Board(board.getTasks())}
-
-    
   `;
 }
 
@@ -52,5 +52,10 @@ const form = document.querySelector("#taskForm");
 form.addEventListener("submit", (event) => {
 	console.log("SUBMIT formulario create task   ");
 	addTask(event, board);
-	render();
 });
+
+window.deleteTask = (taskId) => {
+    board.removeTask(taskId);
+    saveBoard(board);
+    render();
+};

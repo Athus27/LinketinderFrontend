@@ -46,11 +46,6 @@ export class BoardModel {
 		});
 	}
 
-	saveBoard(){
-		this.saveThisBoard(this)
-	}
-
-
 	getSectionOrder(section) {
 		switch (section) {
 			case "ToDo":

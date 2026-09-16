@@ -7,13 +7,13 @@ export function TaskCard(task) {
                     <p>${task.description}</p>
                     <p>Due Date: ${task.dueDate}</p>
                 </div>
-                <div style = "min-height:100px;width:25%;display: flex;flex-direction:row;justify-content: left;">
-                <button class="showView" onClick=showAndHiddenTaskOptions(this)><img class = "icon" src = "../assets/icons/addTask.svg"></button>
-                <button class="ocultView"onClick=showAndHiddenTaskOptions(this)><img class="icon icon-minimize" src="../assets/icons/minimize.svg"></button>
+                <div style = "min-height:100px;width:25%;display: flex;flex-direction:row;justify-content: left;bottom: 0;">
+                    <button class="showView" onClick=showAndHiddenTaskOptions(this)><img class = "icon" src = "../assets/icons/addTask.svg"></button>
+                    <button class="ocultView"onClick=showAndHiddenTaskOptions(this)><img class="icon icon-minimize" src="../assets/icons/minimize.svg"></button>
                 
                     <button class="opt-btn"><img class = "icon" src = "../assets/icons/up.svg"></button>
                     <button class="opt-btn"><img class = "icon" src = "../assets/icons/down.svg"></button>
-                    <button class="opt-btn"><img class = "icon" src = "../assets/icons/delete.svg"></button>
+                    <button class="opt-btn" onClick = "deleteTask(${task.id})"><img class = "icon" src = "../assets/icons/delete.svg"></button>
                 </div>
             </div>
             <div class= "task-options">

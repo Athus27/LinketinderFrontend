@@ -3,9 +3,9 @@ import { saveBoard } from "./storage.js";
 
 export function addTaskShow() {
 	console.log("addtask");
-	//exibir /home/athus/Desktop/ZG/trilhasAcelera/K1T7/LinketinderFrontend/components/TaskForm.js
+	//components/TaskForm.js
 	const taskForm = document.querySelector(".add-task-form");
-	//alterando icone
+	
 	const addTaskBtn = document.querySelector(".add-task-btn");
 	addTaskBtn.textContent = addTaskBtn.textContent === "+" ? "-" : "+";
 
@@ -38,3 +38,4 @@ export function addTask(event, board) {
 	board.addTask(newTask);
 	saveBoard(board);
 }
+1

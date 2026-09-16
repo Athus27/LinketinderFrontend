@@ -44,14 +44,15 @@ Cores do tema
 :root {
 	--blue-light: #94dcd8;
 	--blue-dark: #00b2df;
+	--bege: #eeebe5;
+	--bege-lighter:#f7f6f1;
 	--yellow-light: #f9e79f;
 	--green-light: #82e0aa;
-	--dark-gray: #2e3a43;
+	--dark-gray: #283a46;
 	--half-gray: #4c646b;
 	--font-title: "Comfortaa", Arial, sans-serif;
 	--font-text: "Saira", Arial, sans-serif;
 }
-
 
 /* =========================================================== 
 =========================================================== */
