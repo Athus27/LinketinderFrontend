@@ -1,0 +1,113 @@
+.board {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	height: auto;
+	margin: 20px 0;
+	gap: 1rem;
+	background-color: var(--half-gray);
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	color: white;
+}
+
+.manage-board {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.board-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+.control-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+.add-task-form {
+	display: none;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+h1 {
+	display: flex;
+	align-items: center; /* Alinha na vertical */
+	text-align: center;
+	align-self: center;
+	padding-top: 0;
+}
+
+.board-header img {
+	margin-top: 5px;
+	align-self: center;
+	width: 40px;
+	height: 40px;
+}
+.add-task-btn {
+	font-size: 3rem;
+	color: white;
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+
+.add-task-form {
+	display: none;
+	flex-direction: column;
+	background-color: var(--green-light);
+	gap: 0.5rem;
+	padding: 1rem;
+	border-radius: 10px;
+}
+
+.add-task-form input,
+.add-task-form textarea {
+	width: 100%;
+	padding: 0.5rem;
+	border: none;
+	border-radius: 5px;
+	resize: none;
+	background-color: var(--half-gray);
+	border: 1px solid var(--half-gray);
+	color: white;
+}
+.task-list {
+	list-style-type: none;
+}
+
+.add-task-form button {
+	align-self: flex-end;
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--blue-light);
+	color: white;
+	cursor: pointer;
+}
+
+.board-section {
+	min-height: 120px;
+	height: content;
+	background-color: var(--half-gray);
+	border-radius: 10px;
+	padding: 1rem;
+	overflow-y: hidden;
+}
+
+.todo {
+	background-color: var(--blue-light);
+}
+.doing {
+	background-color: var(--yellow-light);
+}
+.done {
+	background-color: var(--green-light);
+}

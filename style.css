@@ -1,0 +1,10 @@
+@import "./styles/variables.css";
+@import "./styles/base.css";
+
+@import "./components/ui/Header.css";
+@import "./components/Board.css";
+@import "./components/TaskCard.css";
+
+body {
+	background-color: var(--blue-light);
+}

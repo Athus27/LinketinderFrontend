@@ -1,0 +1,57 @@
+/* =========================================================== 
+Tipografia
+=========================================================== */
+
+@font-face {
+	font-family: "Comfortaa";
+	src: url("../assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf") format("truetype");
+	font-weight: 300 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Saira";
+	src: url("../assets/fonts/Saira/Saira-VariableFont_wdth,wght.ttf") format("truetype");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Saira";
+	src: url("../assets/fonts/Saira/Saira-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+body {
+	font-family: var(--font-text);
+}
+
+h1,
+h2,
+h3 {
+	padding-top: 1rem;
+	font-family: var(--font-title);
+}
+
+/* =========================================================== 
+Cores do tema
+=========================================================== */
+
+:root {
+	--blue-light: #94dcd8;
+	--blue-dark: #00b2df;
+	--yellow-light: #f9e79f;
+	--green-light: #82e0aa;
+	--dark-gray: #2e3a43;
+	--half-gray: #4c646b;
+	--font-title: "Comfortaa", Arial, sans-serif;
+	--font-text: "Saira", Arial, sans-serif;
+}
+
+
+/* =========================================================== 
+=========================================================== */

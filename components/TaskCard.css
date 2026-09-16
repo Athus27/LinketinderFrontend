@@ -1,0 +1,61 @@
+.task-card{
+    display: flex;
+    background-color: var(--half-gray);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+.task-options{
+    display: none;
+    background-color: red;
+}
+
+.task-card button {
+    display: flex;
+    background:none;
+    border: none;
+}
+
+
+.icon-minimize {
+  transform: translateY(-15px); 
+
+}
+
+.task-card .ocultView,
+.task-card .opt-btn,
+.task-card .task-options {
+    display: none;
+}
+
+.task-card.options-open .showView {
+    display: none;
+}
+
+.task-card.options-open .ocultView,
+.task-card.options-open .opt-btn {
+    display: flex;
+}
+
+.task-card.options-open .task-options {
+    display: block;
+}
+
+.icon{
+    left: 0!important;
+    background: none;
+    min-width: 50px;
+	
+	filter: brightness(0) invert(1);
+}
+
+.task-content{
+    flex: 1;
+}
+.task-alarm{
+    flex: 0 0 100px;
+    margin-left: 20px;
+    align-items: center;
+}
