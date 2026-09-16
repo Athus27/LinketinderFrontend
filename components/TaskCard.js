@@ -20,14 +20,34 @@ export function TaskCard(task) {
                 
                     <button class="opt-btn" onClick = "moveUpTask(${task.id})"><img class = "icon" src = "../assets/icons/up.svg"></button>
                     <button class="opt-btn" onClick = "moveDownTask(${task.id})"><img class = "icon" src = "../assets/icons/down.svg"></button>
+                    <button class="opt-btn" onclick="editTask(${task.id})"><img class="icon" src="../assets/icons/edit.svg"></button>
                     <button class="opt-btn" onClick = "deleteTask(${task.id})"><img class = "icon" src = "../assets/icons/delete.svg"></button>
                 </div>
             </div>
-            <div class= "task-options">
-                
-                <div class = "task-alarm">
-                    <h3   h3>Alarm</h3>
-                    Area temporaria de alarmes
+            <div class="task-options">
+                <div class="task-alarm">
+                    <div class="alarm-heading">
+                        <h3>Alarms (${task.alarms.length})</h3>
+                    </div>
+
+                     <button
+                        type="button"
+                        class="alarm-toggle"
+                        onclick="toggleAlarmForm(this)"
+                    >   
+                        + Add alarm
+                    </button>
+
+                    <div class="alarm-list">
+                        ${renderAlarms(task.id, task.alarms)}
+                    </div>
+
+                    <form class="alarm-form" data-task-id="${task.id}" data-due-date="${task.dueDate}">
+                        <label for="alarm-${task.id}">Minutes before</label>
+                        <input id="alarm-${task.id}" type="number" name="minutesBefore" min="1" placeholder="Ex: 30" required>
+                        <button type="submit">Add alarm</button>
+                        <output class="alarm-preview">Enter the minutes to preview the alarm.</output>
+                    </form>
                 </div>
             </div>
         </div>
@@ -41,4 +61,33 @@ function formatDate(dateTime) {
     const [year, month, day] = date.split("-");
 
     return `${day}/${month}/${year} às ${time}`;
+}
+
+function renderAlarms(taskId, alarms) {
+    if (!alarms.length) {
+        return `<p class="alarm-empty">No alarms scheduled.</p>`;
+    }
+
+    return alarms
+        .map((alarm) => `
+            <div class="alarm-item">
+                <span>
+                    ${new Date(alarm.alarmAt).toLocaleString("pt-BR", {
+                        dateStyle: "short",
+                        timeStyle: "short"
+                    })}
+                </span>
+
+                <button
+                    type="button"
+                    class="alarm-delete"
+                    onclick="deleteAlarm(${taskId}, ${alarm.id})"
+                    title="Remove alarm"
+                    aria-label="Remove alarm"
+                >
+                    &times;
+                </button>
+            </div>
+        `)
+        .join("");
 }

@@ -54,7 +54,7 @@ h1 {
 }
 .add-task-btn {
 	font-size: 3rem;
-	color: white;
+	color: var(--dark-gray);
 	cursor: pointer;
 	background: none;
 	border: none;

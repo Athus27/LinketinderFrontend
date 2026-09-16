@@ -12,6 +12,10 @@ export class BoardModel {
 		this.tasks = this.tasks.filter((task) => task.id !== taskId);
 	}
 
+	getTask(taskId) {
+		return this.tasks.find((task) => task.id === taskId) ?? null;
+	}
+
 	getTasks() {
 		console.log("getTasks chamada");
 		return this.tasks;
@@ -72,6 +76,40 @@ export class BoardModel {
 
 		task.status = statuses[nextIndex];
 		this.orderTasksBySection(this.tasks);
+
+		return true;
+	}
+
+	addAlarm(taskId, alarm) {
+		const task = this.getTask(taskId);
+
+		if (!task || task.status === "Done") {
+			return false;
+		}
+
+		task.addAlarm(alarm);
+		return true;
+	}
+
+	removeAlarm(taskId, alarmId) {
+		const task = this.getTask(taskId);
+
+		if (task) {
+			task.removeAlarm(alarmId);
+			return;
+		}
+
+		console.log("não foi possivel remover o alarme");
+	}
+
+	updateTask(taskId, changes) {
+		const task = this.getTask(taskId);
+
+		if (!task) return false;
+
+		task.title = changes.title;
+		task.description = changes.description;
+		task.dueDate = changes.dueDate;
 
 		return true;
 	}

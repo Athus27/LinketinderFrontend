@@ -5,6 +5,8 @@ export class Task {
 	title;
 	description;
 	status;
+	alarms;
+
 
 	constructor(parameters) {
 		if (parameters.id !== undefined) {
@@ -14,9 +16,20 @@ export class Task {
 			this.id = Task.nextId++;
 		}
 
+		this.alarms = parameters.alarms || [];
+
 		this.title = parameters.title || "";
 		this.description = parameters.description || "";
 		this.dueDate = parameters.dueDate || "";
 		this.status = parameters.status || "ToDo";
 	}
+
+	addAlarm(alarm){
+		this.alarms.push(alarm)
+	}
+
+	removeAlarm(alarmId){
+		this.alarms = this.alarms.filter((alarm)=> alarm.id !== alarmId);
+	}
+
 }

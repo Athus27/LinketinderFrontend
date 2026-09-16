@@ -5,7 +5,7 @@ export function addTaskShow() {
 	console.log("addtask");
 	//components/TaskForm.js
 	const taskForm = document.querySelector(".add-task-form");
-	
+
 	const addTaskBtn = document.querySelector(".add-task-btn");
 	addTaskBtn.textContent = addTaskBtn.textContent === "+" ? "-" : "+";
 
@@ -20,10 +20,9 @@ export function addTaskShow() {
 }
 
 export function showAndHiddenTaskOptions(button) {
-    const taskCard = button.closest(".task-card");
-    taskCard.classList.toggle("options-open");
+	const taskCard = button.closest(".task-card");
+	taskCard.classList.toggle("options-open");
 }
-
 
 export function addTask(event, board) {
 	event.preventDefault();
@@ -38,4 +37,10 @@ export function addTask(event, board) {
 	board.addTask(newTask);
 	saveBoard(board);
 }
-1
+
+export function toggleAlarmForm(button) {
+	const alarmSection = button.closest(".task-alarm");
+	const form = alarmSection.querySelector(".alarm-form");
+
+	form.hidden = !form.hidden;
+}
